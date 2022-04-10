@@ -1,0 +1,11 @@
+{
+    "but": {
+        "status": "Status",
+        "action": "Action"
+    },
+    "text": {
+        "welcome": "Welcome",
+        "status": "This my status",
+        "action": "This my action"
+    }
+}
