@@ -23,7 +23,6 @@ bot = Bot(token=API_TOKEN, loop=loop, parse_mode=ParseMode.HTML)
 dp = Dispatcher(bot)
 
 
-
 def my_decorator(func):
     """Декоратор my_decorator"""
     async def wrapper(message):
@@ -43,12 +42,13 @@ def my_decorator(func):
 
     return wrapper
 
-
+# Команда /start
 @dp.message_handler(commands=["start"])
 async def command_start(message: types.Message):
     await bot.send_message(message.from_user.id, "/ct - создание БД и таблиц\n/reg - регистрация")
 
 
+# Команда /ct
 @dp.message_handler(commands=["ct"])
 async def command_create_table(message: types.Message):
     """По команде /ct Создает базу данных и таблицу"""
@@ -56,6 +56,7 @@ async def command_create_table(message: types.Message):
     await bot.send_message(message.from_user.id, db.create_tables())
 
 
+# Команда /reg
 @dp.message_handler(commands=["reg"])
 @my_decorator
 async def command_reg(message: types.Message):
@@ -75,6 +76,7 @@ async def button_action(message: types.Message):
     await bot.send_message(message.from_user.id, language.get_text().get("action"), reply_markup=keyboard(menu="menu"))
 
 
+# Выбор языка
 @dp.callback_query_handler(lambda c: c.data in ["ru", "en"])
 async def callback_lang(callback_query: types.CallbackQuery):
     """Обработка нажатия кнопок языка"""
