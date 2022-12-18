@@ -11,6 +11,9 @@ Base = declarative_base()
 session = Session(bind=engine)
 
 class User(Base):
+    """
+    Модель User
+    """
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, unique=True)
